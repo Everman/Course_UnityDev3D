@@ -58,13 +58,13 @@ public class Hacker : MonoBehaviour {
             
             switch (level) { 
                 case 1:
-                    password = easyPasswords[UnityEngine.Random.Range(0, easyPasswords.Length - 1)];
+                    password = easyPasswords[UnityEngine.Random.Range(0, easyPasswords.Length)];
                     break;
                 case 2:
-                    password = mediumPasswords[UnityEngine.Random.Range(0, mediumPasswords.Length - 1)];
+                    password = mediumPasswords[UnityEngine.Random.Range(0, mediumPasswords.Length)];
                     break;
                 case 3:
-                    password = hardPasswords[UnityEngine.Random.Range(0, hardPasswords.Length - 1)];
+                    password = hardPasswords[UnityEngine.Random.Range(0, hardPasswords.Length)];
                     break;
                 default:
                     Debug.LogError("Invalid level number");
