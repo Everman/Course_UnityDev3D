@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
-public class Hacker : MonoBehaviour
-{
+public class Hacker : MonoBehaviour {
     private enum Screen { MainMenu, Password, Win };
     private Screen currentScreen;
-    private enum DifficultyLevel { Easy, Medium, Hard };
-    private DifficultyLevel difficulty;
-    
-    private enum EasyPasswords { skipper, sky, spike, frodo, tippy };
-    private enum MediumPasswords { meern, sentia, performance, yvalidate, ymonitor };
-    private enum HardPasswords { chronometer, postmaster, deadlight, teardrop, diplomat };
+
+    private string password = null;
+    private string[] easyPasswords = { "skipper", "sky", "spike", "frodo", "tippy" };
+    private string[] mediumPasswords = { "meern", "sentia", "performance", "yvalidate", "ymonitor" };
+    private string[] hardPasswords = { "chronometer", "postmaster", "deadlight", "teardrop", "diplomat" };
 
     // Start is called before the first frame update
     void Start()
@@ -55,55 +54,32 @@ public class Hacker : MonoBehaviour
         if (input == "menu") { // We can always go back to main menu
             StartMainMenu();
         } else if (input == "1") {
-            difficulty = DifficultyLevel.Easy;
-            StartGame();
+            password = easyPasswords[UnityEngine.Random.Range(0, easyPasswords.Length-1)];
+            StartGame(input);
         } else if (input == "2") {
-            difficulty = DifficultyLevel.Medium;
-            StartGame();
+            password = mediumPasswords[UnityEngine.Random.Range(0, mediumPasswords.Length - 1)];
+            StartGame(input);
         } else if (input == "3") {
-            difficulty = DifficultyLevel.Hard;
-            StartGame();
+            password = hardPasswords[UnityEngine.Random.Range(0, hardPasswords.Length - 1)];
+            StartGame(input);
         } else {
             Terminal.WriteLine("Invalid input. Choose 1 , 2, or 3!");
         }
     }
 
     private void CheckPassword(string input) {
-        bool passwordCorrect = false;
-        string[] passwords = null;
-
-        if (difficulty == DifficultyLevel.Easy) {
-            passwords = System.Enum.GetNames(typeof(EasyPasswords));
-        } else if (difficulty == DifficultyLevel.Medium) {
-            passwords = System.Enum.GetNames(typeof(MediumPasswords));
-        } else if (difficulty == DifficultyLevel.Hard) {
-            passwords = System.Enum.GetNames(typeof(HardPasswords));
+        if (input == password) {
+            Terminal.WriteLine("Password entered correctly!");
+            currentScreen = Screen.Win;
         } else {
-            Debug.LogError("Unknown difficulty level!");
+            Terminal.WriteLine("Wrong password, please try again!");
         }
-
-        if(passwords != null) {
-            for (int i = 0; i < passwords.Length; i++) {
-                if (input == passwords[i]) {
-                    passwordCorrect = true;
-                    break;
-                }
-            }
-
-            if (passwordCorrect) {
-                Terminal.WriteLine("Password entered correctly!");
-                currentScreen = Screen.Win;
-            } else {
-                Terminal.WriteLine("Wrong password, please try again!");
-            }
-        }
-
     }
 
-    private void StartGame() {
+    private void StartGame(string input) {
         Terminal.ClearScreen();
         currentScreen = Screen.Password;
-        Terminal.WriteLine("Level " + difficulty + " selected.");
+        Terminal.WriteLine("Level " + input + " selected.");
         Terminal.WriteLine("Enter password...");
     }
 
