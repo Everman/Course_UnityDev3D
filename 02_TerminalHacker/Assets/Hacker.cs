@@ -5,24 +5,17 @@ using UnityEngine;
 
 public class Hacker : MonoBehaviour
 {
-    private string greeting = "";
-    private bool nameProvided = false;
     private enum Screen { MainMenu, Password, Win };
     private Screen currentScreen = Screen.MainMenu;
 
     // Start is called before the first frame update
     void Start()
     {
-        EnterName();
+        StartMainMenu();
     }
 
-    private void EnterName() {
-        Terminal.WriteLine("Hello! Please write your name: ");
-    }
-
-    void StartMainMenu(string greeting) {
+    void StartMainMenu() {
         Terminal.ClearScreen();
-        Terminal.WriteLine(greeting);
         Terminal.WriteLine("What would you like to hack into?");
         Terminal.WriteLine("1 Easy:   Neighbors");
         Terminal.WriteLine("2 Medium: Work");
@@ -33,27 +26,31 @@ public class Hacker : MonoBehaviour
     }
 
     void OnUserInput(string input) {
-        if (nameProvided) {
-            if (input == "1") {
-                currentScreen = Screen.Password;
-                StartGame();
-            } else if (input == "2") {
-                currentScreen = Screen.Password;
-                StartGame();
-            } else if (input == "3") {
-                currentScreen = Screen.Password;
-                StartGame();
-            } else if (input == "menu") {
-                StartMainMenu(greeting);
-            } else if (input == "007") {
-                Terminal.WriteLine("Welcome Mr.Bond! Please choose a level...");
-            } else {
-                Terminal.WriteLine("Invalid input. Choose 1 , 2, or 3!");
-            }
+        if (input == "menu") {
+            StartMainMenu();
+        } else if (input == "007") {
+            Terminal.WriteLine("Welcome Mr.Bond! Please choose a level...");
+        } else if (currentScreen == Screen.MainMenu){
+            RunMainMenu(input);
         } else {
-            nameProvided = true;
-            greeting = "Welcome " + input;
-            StartMainMenu(greeting);
+
+        }
+    }
+
+    private void RunMainMenu(string input) {
+        if (input == "menu") { // We can always go back to main menu
+            StartMainMenu();
+        } else if (input == "1") {
+            currentScreen = Screen.Password;
+            StartGame();
+        } else if (input == "2") {
+            currentScreen = Screen.Password;
+            StartGame();
+        } else if (input == "3") {
+            currentScreen = Screen.Password;
+            StartGame();
+        } else {
+            Terminal.WriteLine("Invalid input. Choose 1 , 2, or 3!");
         }
     }
 
