@@ -13,9 +13,10 @@ public class Hacker : MonoBehaviour {
     private string[] mediumPasswords = { "meern", "sentia", "performance", "yvalidate", "ymonitor" };
     private string[] hardPasswords = { "chronometer", "postmaster", "deadlight", "teardrop", "diplomat" };
 
+    private int level;
+
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         StartMainMenu();
     }
 
@@ -32,7 +33,7 @@ public class Hacker : MonoBehaviour {
 
     void OnUserInput(string input) {
         input = input.ToLower(); // make everything lower case before checks, this is entry point so will pass it correctly to the rest of the functions
-        
+
         if (input == "menu") {
             StartMainMenu();
         } else if (input == "exit" || input == "quit") {
@@ -43,7 +44,7 @@ public class Hacker : MonoBehaviour {
             RunMainMenu(input);
         } else if (currentScreen == Screen.Password) {
             CheckPassword(input);
-        } else if ( currentScreen == Screen.Win ) {
+        } else if (currentScreen == Screen.Win) {
             Terminal.WriteLine("Already won, type menu to restart!");
         } else {
 
@@ -51,17 +52,26 @@ public class Hacker : MonoBehaviour {
     }
 
     private void RunMainMenu(string input) {
-        if (input == "menu") { // We can always go back to main menu
-            StartMainMenu();
-        } else if (input == "1") {
-            password = easyPasswords[UnityEngine.Random.Range(0, easyPasswords.Length-1)];
+        bool isValidLevelNumber = (input == "1" || input == "2" || input == "3" );
+        if (isValidLevelNumber) {
+            level = int.Parse(input);
+            
+            switch (level) { 
+                case 1:
+                    password = easyPasswords[UnityEngine.Random.Range(0, easyPasswords.Length - 1)];
+                    break;
+                case 2:
+                    password = mediumPasswords[UnityEngine.Random.Range(0, mediumPasswords.Length - 1)];
+                    break;
+                case 3:
+                    password = hardPasswords[UnityEngine.Random.Range(0, hardPasswords.Length - 1)];
+                    break;
+                default:
+                    Debug.LogError("Invalid level number");
+                    break;
+            }
             StartGame(input);
-        } else if (input == "2") {
-            password = mediumPasswords[UnityEngine.Random.Range(0, mediumPasswords.Length - 1)];
-            StartGame(input);
-        } else if (input == "3") {
-            password = hardPasswords[UnityEngine.Random.Range(0, hardPasswords.Length - 1)];
-            StartGame(input);
+
         } else {
             Terminal.WriteLine("Invalid input. Choose 1 , 2, or 3!");
         }
@@ -79,8 +89,7 @@ public class Hacker : MonoBehaviour {
     private void StartGame(string input) {
         Terminal.ClearScreen();
         currentScreen = Screen.Password;
-        Terminal.WriteLine("Level " + input + " selected.");
-        Terminal.WriteLine("Enter password...");
+        Terminal.WriteLine("Please enter password...");
     }
 
 }
