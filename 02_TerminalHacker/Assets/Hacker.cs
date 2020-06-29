@@ -79,10 +79,58 @@ public class Hacker : MonoBehaviour {
 
     private void CheckPassword(string input) {
         if (input == password) {
-            Terminal.WriteLine("Password entered correctly!");
-            currentScreen = Screen.Win;
+            ShowWinScreen();
         } else {
             Terminal.WriteLine("Wrong password, please try again!");
+        }
+    }
+
+    private void ShowWinScreen() {
+        Terminal.ClearScreen();
+        currentScreen = Screen.Win;
+        ShowLevelReward();
+    }
+
+    private void ShowLevelReward() {
+
+        switch (level) {
+            case 1:
+                Terminal.WriteLine("Password entered correctly for level 1!");
+                Terminal.WriteLine(@"
+           __  
+      (___()'`;
+      /,    /`
+     \\---\\   
+");
+                break;
+            case 2:
+                Terminal.WriteLine("Password entered correctly for level 2!");
+                Terminal.WriteLine(@"
+       \\   // 
+        \\_// 
+         \\/   
+          \\
+           \\
+");
+                break;
+            case 3:
+                Terminal.WriteLine("Password entered correctly for level 3!");
+                Terminal.WriteLine(@"
+   [ O ]
+     \ \      p
+      \ \  \o/
+       \ \--'---_
+       /\ \   / ~~\_
+ ./---/__|=/_/------//~~~\
+/___________________/O   O \
+(===(\_________(===(Oo o o O)
+ \~~~\____/     \---\Oo__o-- 
+   ~~~~~~~       ~~~~~~~~~~   
+");
+                break;
+            default:
+                Debug.LogError("Unknown Level Code!");
+                break;
         }
     }
 
