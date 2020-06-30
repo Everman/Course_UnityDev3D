@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Hacker : MonoBehaviour {
@@ -33,7 +34,7 @@ public class Hacker : MonoBehaviour {
 
     void OnUserInput(string input) {
         input = input.ToLower(); // make everything lower case before checks, this is entry point so will pass it correctly to the rest of the functions
-
+        
         if (input == "menu") {
             StartMainMenu();
         } else if (input == "exit" || input == "quit") {
@@ -47,33 +48,35 @@ public class Hacker : MonoBehaviour {
         } else if (currentScreen == Screen.Win) {
             Terminal.WriteLine("Already won, type menu to restart!");
         } else {
-
+            Debug.LogError("Should never come here");
         }
     }
 
     private void RunMainMenu(string input) {
         bool isValidLevelNumber = (input == "1" || input == "2" || input == "3" );
         if (isValidLevelNumber) {
-            level = int.Parse(input);
-            
-            switch (level) { 
-                case 1:
-                    password = easyPasswords[UnityEngine.Random.Range(0, easyPasswords.Length)];
-                    break;
-                case 2:
-                    password = mediumPasswords[UnityEngine.Random.Range(0, mediumPasswords.Length)];
-                    break;
-                case 3:
-                    password = hardPasswords[UnityEngine.Random.Range(0, hardPasswords.Length)];
-                    break;
-                default:
-                    Debug.LogError("Invalid level number");
-                    break;
-            }
-            StartGame(input);
-
+            SetRandomPassword(input);
+            StartGame();
         } else {
             Terminal.WriteLine("Invalid input. Choose 1 , 2, or 3!");
+        }
+    }
+
+    private void SetRandomPassword(string input) {
+        level = int.Parse(input);
+        switch (level) {
+            case 1:
+                password = easyPasswords[UnityEngine.Random.Range(0, easyPasswords.Length)];
+                break;
+            case 2:
+                password = mediumPasswords[UnityEngine.Random.Range(0, mediumPasswords.Length)];
+                break;
+            case 3:
+                password = hardPasswords[UnityEngine.Random.Range(0, hardPasswords.Length)];
+                break;
+            default:
+                Debug.LogError("Invalid level number");
+                break;
         }
     }
 
@@ -81,13 +84,14 @@ public class Hacker : MonoBehaviour {
         if (input == password) {
             ShowWinScreen();
         } else {
-            Terminal.WriteLine("Wrong password, please try again!");
+            StartGame();
         }
     }
 
     private void ShowWinScreen() {
         Terminal.ClearScreen();
         currentScreen = Screen.Win;
+        Terminal.WriteLine("Type 'menu' to return to main menu");
         ShowLevelReward();
     }
 
@@ -95,7 +99,7 @@ public class Hacker : MonoBehaviour {
 
         switch (level) {
             case 1:
-                Terminal.WriteLine("Password entered correctly for level 1!");
+                Terminal.WriteLine("Welcome to the neighborhood!");
                 Terminal.WriteLine(@"
            __  
       (___()'`;
@@ -104,17 +108,17 @@ public class Hacker : MonoBehaviour {
 ");
                 break;
             case 2:
-                Terminal.WriteLine("Password entered correctly for level 2!");
+                Terminal.WriteLine("Welcome to Ymor!");
                 Terminal.WriteLine(@"
        \\   // 
         \\_// 
          \\/   
-          \\
-           \\
+         //
+        //
 ");
                 break;
             case 3:
-                Terminal.WriteLine("Password entered correctly for level 3!");
+                Terminal.WriteLine("Welcome to the Pentagon!");
                 Terminal.WriteLine(@"
    [ O ]
      \ \      p
@@ -134,10 +138,11 @@ public class Hacker : MonoBehaviour {
         }
     }
 
-    private void StartGame(string input) {
+    private void StartGame() {
         Terminal.ClearScreen();
         currentScreen = Screen.Password;
-        Terminal.WriteLine("Please enter password...");
+        Terminal.WriteLine("Type menu to return to main menu");
+        Terminal.WriteLine("Please enter password, hint: " + password.Anagram());
     }
 
 }
