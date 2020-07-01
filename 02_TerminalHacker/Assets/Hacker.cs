@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using UnityEditorInternal;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Hacker : MonoBehaviour {
     private enum Screen { MainMenu, Password, Win };
     private Screen currentScreen;
 
+
     private string password = null;
     private string[] easyPasswords = { "skipper", "sky", "spike", "frodo", "tippy" };
     private string[] mediumPasswords = { "meern", "sentia", "performance", "yvalidate", "ymonitor" };
-    private string[] hardPasswords = { "chronometer", "postmaster", "deadlight", "teardrop", "diplomat" };
+    private string[] hardPasswords = { "chrono", "postmaster", "light", "tear", "pentagon" };
 
     private int level;
 
@@ -37,8 +33,8 @@ public class Hacker : MonoBehaviour {
         
         if (input == "menu") {
             StartMainMenu();
-        } else if (input == "exit" || input == "quit") {
-            UnityEditor.EditorApplication.isPlaying = false;
+        } else if (input == "exit" || input == "quit" || input == "abort") {
+            Application.Quit();
         } else if (input == "007") {
             Terminal.WriteLine("Welcome Mr.Bond! Please choose a level...");
         } else if (currentScreen == Screen.MainMenu) {
@@ -91,7 +87,6 @@ public class Hacker : MonoBehaviour {
     private void ShowWinScreen() {
         Terminal.ClearScreen();
         currentScreen = Screen.Win;
-        Terminal.WriteLine("Type 'menu' to return to main menu");
         ShowLevelReward();
     }
 
@@ -106,9 +101,10 @@ public class Hacker : MonoBehaviour {
       /,    /`
      \\---\\   
 ");
+                Terminal.WriteLine("Type 'menu' to return to main menu");
                 break;
             case 2:
-                Terminal.WriteLine("Welcome to Ymor!");
+                Terminal.WriteLine("Welcome to Ymor network!");
                 Terminal.WriteLine(@"
        \\   // 
         \\_// 
@@ -116,21 +112,17 @@ public class Hacker : MonoBehaviour {
          //
         //
 ");
+                Terminal.WriteLine("Type 'menu' to return to main menu");
                 break;
             case 3:
                 Terminal.WriteLine("Welcome to the Pentagon!");
                 Terminal.WriteLine(@"
-   [ O ]
-     \ \      p
-      \ \  \o/
-       \ \--'---_
-       /\ \   / ~~\_
- ./---/__|=/_/------//~~~\
-/___________________/O   O \
-(===(\_________(===(Oo o o O)
- \~~~\____/     \---\Oo__o-- 
-   ~~~~~~~       ~~~~~~~~~~   
+    ___
+ __(   )====::
+/~~~~~~~~~\
+\O.O.O.O.O/
 ");
+                Terminal.WriteLine("Type 'menu' to return to main menu");
                 break;
             default:
                 Debug.LogError("Unknown Level Code!");
