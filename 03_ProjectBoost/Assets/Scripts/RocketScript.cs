@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class RocketScript : MonoBehaviour
 {
+    // Component references
     private Rigidbody rigidBody;
+    private AudioSource audioSource;
+
+    // Modifiable variables
     [SerializeField] private float rotationSpeed = 0;
     [SerializeField] private float thrustPower = 0;
 
@@ -13,6 +17,7 @@ public class RocketScript : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -24,6 +29,11 @@ public class RocketScript : MonoBehaviour
     private void ProcessInput() {
         if (Input.GetKey(KeyCode.Space)) {
             rigidBody.AddRelativeForce(Vector3.up * thrustPower);
+            if (!audioSource.isPlaying) {
+                audioSource.Play();
+            }
+        } else {
+            audioSource.Pause();
         }
 
         if(Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) {
