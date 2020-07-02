@@ -194,6 +194,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockerShip
       objectReference: {fileID: 0}
+    - target: {fileID: 4078282281952255412, guid: f6b3ea5f659381b4585048261994c866,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6b3ea5f659381b4585048261994c866, type: 3}
 --- !u!1 &1926743570 stripped
@@ -214,6 +219,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ea03d58971bc14b90209a837a16b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 50
+  thrustPower: 4
+--- !u!54 &1926743573
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926743570}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.02
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 48
+  m_CollisionDetection: 1
 --- !u!1001 &448605853044514238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -372,22 +395,22 @@ PrefabInstance:
     - target: {fileID: 3445208737160783680, guid: 3c8f93d96d8221941b2b4220937ab8cc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 3445208737160783680, guid: 3c8f93d96d8221941b2b4220937ab8cc,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3445208737160783680, guid: 3c8f93d96d8221941b2b4220937ab8cc,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3445208737160783680, guid: 3c8f93d96d8221941b2b4220937ab8cc,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3445208737160783680, guid: 3c8f93d96d8221941b2b4220937ab8cc,
         type: 3}
