@@ -49,4 +49,21 @@ public class RocketScript : MonoBehaviour
         }
         rigidBody.freezeRotation = false;
     }
+
+    void OnCollisionEnter(Collision collision) {
+
+        switch (collision.transform.tag) {
+            case "Friendly":
+                Debug.Log("Friendly");
+                break;
+            case "Fuel":
+                Debug.Log("Power Up");
+                break;
+            default:
+                Debug.Log("Died!");
+                break;
+                
+
+        }
+    }
 }
