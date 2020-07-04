@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RocketScript : MonoBehaviour
 {
@@ -56,11 +55,15 @@ public class RocketScript : MonoBehaviour
             case "Friendly":
                 Debug.Log("Friendly");
                 break;
+            case "Finish":
+                Debug.Log("Finish");
+                SceneManager.LoadScene(1);
+                break;
             case "Fuel":
                 Debug.Log("Power Up");
                 break;
             default:
-                Debug.Log("Died!");
+                SceneManager.LoadScene(0);
                 break;
                 
 

@@ -89,7 +89,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 0.5316553
-  MaxDistance: 500
+  MaxDistance: 5620
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -175,8 +175,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.6382375, z: 1}
-  m_Center: {x: 0, y: -0.0023121834, z: 0}
+  m_Size: {x: 0.90409285, y: 2.586087, z: 1}
+  m_Center: {x: -0.00901553, y: -0.028387427, z: 0}
 --- !u!1 &4078282281876883551
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,8 +616,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.35418943, y: 0.7918353, z: 0.27267408}
-  m_Center: {x: -0.51273835, y: 1.016539, z: -0.0019668748}
+  m_Size: {x: 0.31919602, y: 0.74835646, z: 0.27267408}
+  m_Center: {x: -0.53023463, y: 0.9947995, z: -0.0019668748}
 --- !u!1 &4078282282871938171
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,5 +741,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3069376, y: 0.78663725, z: 0.32361633}
-  m_Center: {x: -0.49662182, y: 1.0085306, z: -0.0009806913}
+  m_Size: {x: 0.27447167, y: 0.7318236, z: 0.32361633}
+  m_Center: {x: -0.48038885, y: 0.9811237, z: -0.0009806971}
