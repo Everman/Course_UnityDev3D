@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 150
-  thrustPower: 8.5
+  thrustPower: 1000
   EngineSound: {fileID: 8300000, guid: 93c6b7f95949d1d4eae7c4811cc709d8, type: 3}
   DeathSound: {fileID: 8300000, guid: 7a256cad6bc3eaa49849d47253178cb5, type: 3}
   VictorySound: {fileID: 8300000, guid: 997cb25394abd4a459a5428d56992315, type: 3}

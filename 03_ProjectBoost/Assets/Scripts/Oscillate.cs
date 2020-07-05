@@ -5,10 +5,13 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class Oscillate : MonoBehaviour
 {
+    const float tau = Mathf.PI * 2f;
+
     [SerializeField] Vector3 movementVector;
+    [SerializeField] float animationDuration = 2f; //seconds
 
     //TODO remove from inspector later
-    [Range(0, 1)] [SerializeField] float movementFactor;
+    float movementFactor;
 
     Vector3 startingPos;
 
@@ -22,6 +25,9 @@ public class Oscillate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float cycles = Time.time / animationDuration; //grows continually from 0
+        movementFactor = ( ( Mathf.Sin(cycles * tau ) / 2f ) + 0.5f ); // Sinus goes from -1 to 1, divide it by two and go up a half to go between 0 and 1
+
         Vector3 offset = movementVector * movementFactor;
         transform.position = startingPos + offset;
     }

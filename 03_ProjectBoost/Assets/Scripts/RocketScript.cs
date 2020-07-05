@@ -40,7 +40,7 @@ public class RocketScript : MonoBehaviour
 
     private void Thrust() {
         if (Input.GetKey(KeyCode.Space)) {
-            rigidBody.AddRelativeForce(Vector3.up * thrustPower);
+            rigidBody.AddRelativeForce(Vector3.up * thrustPower * Time.deltaTime);
             if (!audioSource.isPlaying) {
                 audioSource.PlayOneShot(EngineSound);
                 PS_RocketBooster.Play();
