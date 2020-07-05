@@ -12,9 +12,13 @@ public class RocketScript : MonoBehaviour
     [SerializeField] private float thrustPower = 0;
 
     private AudioSource audioSource;
-    [SerializeField] private AudioClip EngineSound;
-    [SerializeField] private AudioClip DeathSound;
-    [SerializeField] private AudioClip VictorySound;
+    [SerializeField] private AudioClip EngineSound = null;
+    [SerializeField] private AudioClip DeathSound = null;
+    [SerializeField] private AudioClip VictorySound = null;
+
+    [SerializeField] private ParticleSystem PS_Victory = null;
+    [SerializeField] private ParticleSystem PS_Death = null;
+    [SerializeField] private ParticleSystem PS_RocketBooster = null;
 
     enum State {Alive, Dying, Transcending};
     State state = State.Alive;
@@ -39,10 +43,12 @@ public class RocketScript : MonoBehaviour
             rigidBody.AddRelativeForce(Vector3.up * thrustPower);
             if (!audioSource.isPlaying) {
                 audioSource.PlayOneShot(EngineSound);
+                PS_RocketBooster.Play();
             }
         } else {
             if (state != State.Transcending) {
                 audioSource.Stop();
+                PS_RocketBooster.Stop();
             }
         }
     }
@@ -83,12 +89,14 @@ public class RocketScript : MonoBehaviour
         state = State.Transcending;
         audioSource.Stop();
         audioSource.PlayOneShot(VictorySound);
+        PS_Victory.Play();
         Invoke("LoadNextScene", 1f); // parameter time
     }
     private void StartDeathSequence() {
         state = State.Dying;
         audioSource.Stop();
         audioSource.PlayOneShot(DeathSound);
+        PS_Death.Play();
         Invoke("LoadNextScene", 1f);  // parameter time
     }
 
