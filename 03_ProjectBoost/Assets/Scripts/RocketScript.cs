@@ -6,11 +6,18 @@ public class RocketScript : MonoBehaviour
 {
     // Component references
     private Rigidbody rigidBody;
-    private AudioSource audioSource;
 
     // Modifiable variables
     [SerializeField] private float rotationSpeed = 0;
     [SerializeField] private float thrustPower = 0;
+
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip EngineSound;
+    [SerializeField] private AudioClip DeathSound;
+    [SerializeField] private AudioClip VictorySound;
+
+    enum State {Alive, Dying, Transcending};
+    State state = State.Alive;
 
     // Start is called before the first frame update
     void Start()
@@ -20,20 +27,23 @@ public class RocketScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        Thrust();
-        Rotation();
+    void Update() {
+        if (state != State.Dying) {
+            Thrust();
+            Rotation();
+        }
     }
 
     private void Thrust() {
         if (Input.GetKey(KeyCode.Space)) {
             rigidBody.AddRelativeForce(Vector3.up * thrustPower);
             if (!audioSource.isPlaying) {
-                audioSource.Play();
+                audioSource.PlayOneShot(EngineSound);
             }
         } else {
-            audioSource.Pause();
+            if (state != State.Transcending) {
+                audioSource.Stop();
+            }
         }
     }
 
@@ -51,22 +61,55 @@ public class RocketScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision) {
 
-        switch (collision.transform.tag) {
+        if (state != State.Alive) { return; }
+
+        switch (collision.gameObject.tag) {
             case "Friendly":
                 Debug.Log("Friendly");
                 break;
             case "Finish":
-                Debug.Log("Finish");
-                SceneManager.LoadScene(1);
+                StartSuccessSequence();
                 break;
             case "Fuel":
                 Debug.Log("Power Up");
                 break;
             default:
+                StartDeathSequence();
+                break;
+        }
+    }
+
+    private void StartSuccessSequence() {
+        state = State.Transcending;
+        audioSource.Stop();
+        audioSource.PlayOneShot(VictorySound);
+        Invoke("LoadNextScene", 1f); // parameter time
+    }
+    private void StartDeathSequence() {
+        state = State.Dying;
+        audioSource.Stop();
+        audioSource.PlayOneShot(DeathSound);
+        Invoke("LoadNextScene", 1f);  // parameter time
+    }
+
+    private void LoadNextScene() { 
+        switch (state) {
+            case State.Alive:
+                // Should not come here?
+                Debug.Log("Loading scene while alive, should not happen.");
+                break;
+            case State.Dying:
+                state = State.Alive;
                 SceneManager.LoadScene(0);
                 break;
-                
-
+            case State.Transcending:
+                state = State.Alive;
+                SceneManager.LoadScene(1);
+                break;
+            default:
+                //Should never be the case
+                Debug.LogError("Unkown state in LoadNextScene");
+                break;
         }
     }
 }

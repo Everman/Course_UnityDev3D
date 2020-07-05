@@ -68,6 +68,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 150
   thrustPower: 8.5
+  EngineSound: {fileID: 8300000, guid: 93c6b7f95949d1d4eae7c4811cc709d8, type: 3}
+  DeathSound: {fileID: 8300000, guid: 7a256cad6bc3eaa49849d47253178cb5, type: 3}
+  VictorySound: {fileID: 8300000, guid: 997cb25394abd4a459a5428d56992315, type: 3}
 --- !u!82 &1926743574
 AudioSource:
   m_ObjectHideFlags: 0
@@ -78,7 +81,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a14272f74bfaa8f4083ee5f8b49eee6b, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.3
   m_Pitch: 0.6
