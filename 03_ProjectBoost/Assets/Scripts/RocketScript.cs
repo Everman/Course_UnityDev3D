@@ -10,6 +10,7 @@ public class RocketScript : MonoBehaviour
     // Modifiable variables
     [SerializeField] private float rotationSpeed = 0;
     [SerializeField] private float thrustPower = 0;
+    [SerializeField] private float levelLoadDelay = 2f;
 
     private AudioSource audioSource;
     [SerializeField] private AudioClip EngineSound = null;
@@ -90,14 +91,14 @@ public class RocketScript : MonoBehaviour
         audioSource.Stop();
         audioSource.PlayOneShot(VictorySound);
         PS_Victory.Play();
-        Invoke("LoadNextScene", 1f); // parameter time
+        Invoke("LoadNextScene", levelLoadDelay);
     }
     private void StartDeathSequence() {
         state = State.Dying;
         audioSource.Stop();
         audioSource.PlayOneShot(DeathSound);
         PS_Death.Play();
-        Invoke("LoadNextScene", 1f);  // parameter time
+        Invoke("LoadNextScene", levelLoadDelay);
     }
 
     private void LoadNextScene() { 

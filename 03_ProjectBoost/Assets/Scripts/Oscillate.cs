@@ -25,7 +25,10 @@ public class Oscillate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (animationDuration <= Mathf.Epsilon) { return; } // prevent NaN
+        
         float cycles = Time.time / animationDuration; //grows continually from 0
+        
         movementFactor = ( ( Mathf.Sin(cycles * tau ) / 2f ) + 0.5f ); // Sinus goes from -1 to 1, divide it by two and go up a half to go between 0 and 1
 
         Vector3 offset = movementVector * movementFactor;
