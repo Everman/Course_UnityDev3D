@@ -171,6 +171,7 @@ MonoBehaviour:
   PS_Victory: {fileID: 198631065880949642}
   PS_Death: {fileID: 198204746933714295}
   PS_RocketBooster: {fileID: 198100717767727074}
+  collisionDisabled: 0
 --- !u!82 &1926743574
 AudioSource:
   m_ObjectHideFlags: 0

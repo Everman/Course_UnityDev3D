@@ -19,7 +19,6 @@ public class Oscillate : MonoBehaviour
     void Start()
     {
         startingPos = transform.position;
-        Debug.Log("Transform.position: " + transform.position);
     }
 
     // Update is called once per frame

@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +22,8 @@ public class RocketScript : MonoBehaviour
     [SerializeField] private ParticleSystem PS_Death = null;
     [SerializeField] private ParticleSystem PS_RocketBooster = null;
 
+    [SerializeField] private bool collisionDisabled = false;
+
     enum State {Alive, Dying, Transcending};
     State state = State.Alive;
 
@@ -33,9 +36,21 @@ public class RocketScript : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (state != State.Dying) {
+        if (state == State.Alive) {
             Thrust();
             Rotation();
+        }
+        if (Debug.isDebugBuild) {
+            DebugModeCheck();
+        }
+    }
+
+    private void DebugModeCheck() {
+        if (Input.GetKeyDown(KeyCode.C)) {
+            collisionDisabled = !collisionDisabled;
+        }
+        if (Input.GetKeyDown(KeyCode.L)) {
+            LoadNextScene();
         }
     }
 
@@ -57,7 +72,6 @@ public class RocketScript : MonoBehaviour
     private void Rotation() {
         rigidBody.freezeRotation = true;
         if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) {
-            Debug.Log("Left and/or Right pressed");
         } else if (Input.GetKey(KeyCode.A)) {
             transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
         } else if (Input.GetKey(KeyCode.D)) {
@@ -68,17 +82,18 @@ public class RocketScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision) {
 
+        if (collisionDisabled && collision.gameObject.tag != "Finish") { return; } // Debug mode
         if (state != State.Alive) { return; }
 
         switch (collision.gameObject.tag) {
             case "Friendly":
-                Debug.Log("Friendly");
+                // does nothing yet
                 break;
             case "Finish":
                 StartSuccessSequence();
                 break;
             case "Fuel":
-                Debug.Log("Power Up");
+                // does nothing yet
                 break;
             default:
                 StartDeathSequence();
@@ -98,27 +113,25 @@ public class RocketScript : MonoBehaviour
         audioSource.Stop();
         audioSource.PlayOneShot(DeathSound);
         PS_Death.Play();
-        Invoke("LoadNextScene", levelLoadDelay);
+        Invoke("ReloadScene", levelLoadDelay);
     }
 
-    private void LoadNextScene() { 
-        switch (state) {
-            case State.Alive:
-                // Should not come here?
-                Debug.Log("Loading scene while alive, should not happen.");
-                break;
-            case State.Dying:
-                state = State.Alive;
-                SceneManager.LoadScene(0);
-                break;
-            case State.Transcending:
-                state = State.Alive;
-                SceneManager.LoadScene(1);
-                break;
-            default:
-                //Should never be the case
-                Debug.LogError("Unkown state in LoadNextScene");
-                break;
+    private void LoadNextScene() {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        int totalNumberOfScenes = SceneManager.sceneCountInBuildSettings - 1; // -1 to equal it with the index
+
+        Debug.Log("CurrentScene: " + currentScene);
+        Debug.Log("totalNumberOfScenes: " + totalNumberOfScenes);
+
+        if (currentScene > 0 && currentScene % totalNumberOfScenes == 0) {
+            SceneManager.LoadScene(0);
+        } else {
+            SceneManager.LoadScene(currentScene + 1);
         }
+        
+    }
+
+    private void ReloadScene() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
