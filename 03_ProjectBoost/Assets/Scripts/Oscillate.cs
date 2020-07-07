@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [DisallowMultipleComponent]
 public class Oscillate : MonoBehaviour
 {
     const float tau = Mathf.PI * 2f;
 
-    [SerializeField] Vector3 movementVector;
+    [SerializeField] Vector3 movementVector = new Vector3();
     [SerializeField] float animationDuration = 2f; //seconds
 
     //TODO remove from inspector later

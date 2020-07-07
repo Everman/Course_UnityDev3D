@@ -1,6 +1,4 @@
-﻿
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class RocketScript : MonoBehaviour
@@ -120,15 +118,11 @@ public class RocketScript : MonoBehaviour
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         int totalNumberOfScenes = SceneManager.sceneCountInBuildSettings - 1; // -1 to equal it with the index
 
-        Debug.Log("CurrentScene: " + currentScene);
-        Debug.Log("totalNumberOfScenes: " + totalNumberOfScenes);
-
         if (currentScene > 0 && currentScene % totalNumberOfScenes == 0) {
             SceneManager.LoadScene(0);
         } else {
             SceneManager.LoadScene(currentScene + 1);
         }
-        
     }
 
     private void ReloadScene() {
