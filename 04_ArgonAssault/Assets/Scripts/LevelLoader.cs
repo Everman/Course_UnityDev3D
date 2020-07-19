@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    [SerializeField] float levelLoadDelay = 2;
+    [Tooltip("Delay in seconds to transit to Game Scene")][SerializeField] float levelLoadDelay = 2f;
 
     // Start is called before the first frame update
     void Start()
