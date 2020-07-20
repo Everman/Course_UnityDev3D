@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4775774438825354}
   - component: {fileID: 33739784584191582}
   - component: {fileID: 23718787820125050}
+  - component: {fileID: 5362127278112231819}
   m_Layer: 0
   m_Name: StarSparrow12
   m_TagString: Untagged
@@ -124,6 +125,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &5362127278112231819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626707168461546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfba212653ac0ac47bfb4589dfa2c617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathFX: {fileID: 3379542709013533766, guid: da13e8d70967e0945a4adffe8566c856, type: 3}
+  deathDelay: 0.5
 --- !u!1 &1637227471106616
 GameObject:
   m_ObjectHideFlags: 0
