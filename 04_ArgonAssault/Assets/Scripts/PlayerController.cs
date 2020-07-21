@@ -1,8 +1,7 @@
-﻿using System;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
+using System;
 
 // todo: Work out why speed starts very fast
 
@@ -20,14 +19,41 @@ public class PlayerController : MonoBehaviour {
     [Tooltip("Maximum degree the ship will be tilted in the Pitch axis")] [SerializeField] float controlPitchFactor = -30f;
     [Tooltip("Maximum degree the ship will be tilted in the Roll axis")]  [SerializeField] float controlRollFactor = -30f;
 
+    [Tooltip("Array that should contain all the gun references")] [SerializeField] GameObject[] guns = null;
+
     float xThrow, yThrow;
 
     bool controlsEnabled = true;
+
+    private void Start() {
+        if (guns.Length == 0) { Debug.LogError("ERROR - No guns assigned to guns array for PlayerController script"); }
+    }
 
     // Update is called once per frame
     void Update() {
         CalculatePosition();
         CalculateRotation();
+        ProcessFiring();
+    }
+
+    private void ProcessFiring() {
+        if (Input.GetButton("Fire1")) {
+            EnableFiring();
+        } else {
+            DisableFiring();
+        }
+    }
+
+    private void EnableFiring() {
+        foreach (GameObject gun in guns) {
+            gun.SetActive(true);
+        }
+    }
+
+    private void DisableFiring() {
+        foreach (GameObject gun in guns) {
+            gun.SetActive(false);
+        }
     }
 
     private void CalculateRotation() {

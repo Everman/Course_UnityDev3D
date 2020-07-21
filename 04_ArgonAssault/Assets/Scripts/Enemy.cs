@@ -8,6 +8,10 @@ public class Enemy : MonoBehaviour
     [Tooltip("Time it takes before enemy ship is removed from game")] [SerializeField] float deathDelay = 1f;
     [Tooltip("Parent where DeathFX should be bound to")][SerializeField] GameObject fxParent = null;
 
+    [Tooltip("Amount of points awarded when calling the ScoreHit function")] [SerializeField] int pointsPerHit = 10;
+
+    [Tooltip("Number of hits required to kill an enemy")] [SerializeField] int maxHits = 10;
+
     private ScoreBoard scoreBoard;
 
     private bool alive = true;
@@ -34,12 +38,24 @@ public class Enemy : MonoBehaviour
     void OnParticleCollision(GameObject other) 
     {
         if (alive) {
-            alive = false;
-            scoreBoard.ScoreHit();
-            GameObject fx = Instantiate(deathFX, transform.position, Quaternion.identity);
-            fx.transform.parent = fxParent.transform;
-            Invoke("DestroyEnemy", deathDelay);
+
+            scoreBoard.ScoreHit(pointsPerHit);
+            if(maxHits < 1) {
+                alive = false;
+                KillEnemy();
+            } else {
+                print("maxHits:" +maxHits);
+                maxHits--;
+            }
+            
+
         }
+    }
+
+    private void KillEnemy() {
+        GameObject fx = Instantiate(deathFX, transform.position, Quaternion.identity);
+        fx.transform.parent = fxParent.transform;
+        Invoke("DestroyEnemy", deathDelay);
     }
 
     private void DestroyEnemy() {

@@ -122,6 +122,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &212672933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6139085190449295444, guid: e4e7fc71315f2294289821ef6a454da6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8221639429645008469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330757072
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,6 +199,10 @@ PrefabInstance:
       propertyPath: fxParent
       value: 
       objectReference: {fileID: 596013022}
+    - target: {fileID: 544553257, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
+      propertyPath: maxHits
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1946970332979032, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
       propertyPath: m_Name
       value: StarSparrow13
@@ -919,6 +929,14 @@ PrefabInstance:
       propertyPath: fxParent
       value: 
       objectReference: {fileID: 596013022}
+    - target: {fileID: 38865064, guid: 7861019a7b8cb6f4db5310695263b29a, type: 3}
+      propertyPath: pointsPerHit
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 38865064, guid: 7861019a7b8cb6f4db5310695263b29a, type: 3}
+      propertyPath: maxHits
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1741139820255028, guid: 7861019a7b8cb6f4db5310695263b29a, type: 3}
       propertyPath: m_Name
       value: StarSparrow9
@@ -1061,7 +1079,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b72428f07d72ea45b5eb4fa610ed2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsPerHit: 10
 --- !u!1 &1695584896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,6 +1295,14 @@ PrefabInstance:
       propertyPath: fxParent
       value: 
       objectReference: {fileID: 596013022}
+    - target: {fileID: 544553257, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
+      propertyPath: pointsPerHit
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 544553257, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
+      propertyPath: maxHits
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1946970332979032, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
       propertyPath: m_Name
       value: StarSparrow13
@@ -1358,6 +1383,12 @@ Transform:
   m_Father: {fileID: 1511265456}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2139825179 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8221639429984673608, guid: e4e7fc71315f2294289821ef6a454da6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8221639429645008469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4674829082005233 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8217303758712107172, guid: e4e7fc71315f2294289821ef6a454da6,
@@ -1371,6 +1402,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 963194228}
     m_Modifications:
+    - target: {fileID: 6139085190449295465, guid: e4e7fc71315f2294289821ef6a454da6,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8217303758712107172, guid: e4e7fc71315f2294289821ef6a454da6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1426,6 +1462,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8221639429675580201, guid: e4e7fc71315f2294289821ef6a454da6,
+        type: 3}
+      propertyPath: guns.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8221639429675580201, guid: e4e7fc71315f2294289821ef6a454da6,
+        type: 3}
+      propertyPath: guns.Array.data[0]
+      value: 
+      objectReference: {fileID: 2139825179}
+    - target: {fileID: 8221639429675580201, guid: e4e7fc71315f2294289821ef6a454da6,
+        type: 3}
+      propertyPath: guns.Array.data[1]
+      value: 
+      objectReference: {fileID: 212672933}
+    - target: {fileID: 8221639429984673653, guid: e4e7fc71315f2294289821ef6a454da6,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8223046926493324044, guid: e4e7fc71315f2294289821ef6a454da6,
         type: 3}
       propertyPath: m_Name
@@ -1445,6 +1501,11 @@ PrefabInstance:
       propertyPath: fxParent
       value: 
       objectReference: {fileID: 596013022}
+    - target: {fileID: -7635152514181401090, guid: f805c7b2f982faf43833878e4f22ae2a,
+        type: 3}
+      propertyPath: maxHits
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1510364872509504, guid: f805c7b2f982faf43833878e4f22ae2a, type: 3}
       propertyPath: m_Name
       value: StarSparrow1
