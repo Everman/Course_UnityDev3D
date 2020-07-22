@@ -122,6 +122,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &64145310 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1946970332979032, guid: 6647bc14b7f253f4aa7ed042ccbd8304,
+    type: 3}
+  m_PrefabInstance: {fileID: 2086465598}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &64145311
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64145310}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!320 &64145312
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64145310}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 75ebe3ad94555724aabd311ccd74cd01, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -2255109353745290563, guid: 75ebe3ad94555724aabd311ccd74cd01, type: 2}
+    value: {fileID: 64145311}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &212672933 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6139085190449295444, guid: e4e7fc71315f2294289821ef6a454da6,
@@ -205,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1946970332979032, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
       propertyPath: m_Name
-      value: StarSparrow13
+      value: Enemy (3)
       objectReference: {fileID: 0}
     - target: {fileID: 4331568703382362, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
       propertyPath: m_LocalPosition.x
@@ -939,7 +983,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1741139820255028, guid: 7861019a7b8cb6f4db5310695263b29a, type: 3}
       propertyPath: m_Name
-      value: StarSparrow9
+      value: Enemy (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4172660377238974, guid: 7861019a7b8cb6f4db5310695263b29a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1305,35 +1349,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1946970332979032, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
       propertyPath: m_Name
-      value: StarSparrow13
+      value: Enemy (0)
       objectReference: {fileID: 0}
     - target: {fileID: 4331568703382362, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.038422
+      value: 10.03842
       objectReference: {fileID: 0}
     - target: {fileID: 4331568703382362, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -21.081192
+      value: -26.4
       objectReference: {fileID: 0}
     - target: {fileID: 4331568703382362, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 52.007736
+      value: 52.6
       objectReference: {fileID: 0}
     - target: {fileID: 4331568703382362, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -5.9974744e-17
       objectReference: {fileID: 0}
     - target: {fileID: 4331568703382362, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9984246
+      value: 0.99842453
       objectReference: {fileID: 0}
     - target: {fileID: 4331568703382362, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.056110717
+      value: -0.056110714
       objectReference: {fileID: 0}
     - target: {fileID: 4331568703382362, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: -1.291125e-16
       objectReference: {fileID: 0}
     - target: {fileID: 4331568703382362, guid: 6647bc14b7f253f4aa7ed042ccbd8304, type: 3}
       propertyPath: m_RootOrder
@@ -1508,7 +1552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1510364872509504, guid: f805c7b2f982faf43833878e4f22ae2a, type: 3}
       propertyPath: m_Name
-      value: StarSparrow1
+      value: Enemy (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4433942057210488, guid: f805c7b2f982faf43833878e4f22ae2a, type: 3}
       propertyPath: m_LocalPosition.x
