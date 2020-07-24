@@ -38,21 +38,16 @@ public class PlayerController : MonoBehaviour {
 
     private void ProcessFiring() {
         if (Input.GetButton("Fire1")) {
-            EnableFiring();
+            SetGunsActive( true );
         } else {
-            DisableFiring();
+            SetGunsActive( false );
         }
     }
 
-    private void EnableFiring() {
+    private void SetGunsActive(bool isActive) {
         foreach (GameObject gun in guns) {
-            gun.SetActive(true);
-        }
-    }
-
-    private void DisableFiring() {
-        foreach (GameObject gun in guns) {
-            gun.SetActive(false);
+            ParticleSystem.EmissionModule emissionModule = gun.GetComponent<ParticleSystem>().emission;
+            emissionModule.enabled = isActive;
         }
     }
 
