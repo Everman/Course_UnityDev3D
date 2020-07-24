@@ -258,5 +258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfba212653ac0ac47bfb4589dfa2c617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fxParent: {fileID: 0}
   deathFX: {fileID: 3379542709013533766, guid: da13e8d70967e0945a4adffe8566c856, type: 3}
   deathDelay: 0.5
+  pointsPerHit: 10
+  maxHits: 10
