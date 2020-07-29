@@ -2,17 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
-public class EditorGridSnap : MonoBehaviour
+[ExecuteInEditMode][SelectionBase]
+public class CubeEditor : MonoBehaviour
 {
-
     //todo fix that gridsize is no longer + 1 
     [Tooltip("Gridsize + 1")] [SerializeField] [Range(1, 20)] int gridSize = 10;
 
+    private Vector3 snapPos;
+    private TextMesh textMesh;
+
+    private void Start() {
+        textMesh = GetComponentInChildren<TextMesh>();
+    }
+
     // Update is called once per frame
-    void Update()
-    {
-        Vector3 snapPos;
+    void Update() {
+        SnapToPosition();
+
+        textMesh.text = snapPos.x/transform.localScale.x + "," + snapPos.z / transform.localScale.z;
+
+    }
+
+    private void SnapToPosition() {
+        
         snapPos.x = Mathf.RoundToInt(transform.position.x / 10f) * transform.localScale.x;
         snapPos.z = Mathf.RoundToInt(transform.position.z / 10f) * transform.localScale.z;
 
