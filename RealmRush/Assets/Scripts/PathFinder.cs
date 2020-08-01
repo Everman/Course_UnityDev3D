@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ public class PathFinder : MonoBehaviour
 
     Waypoint searchCenter;
 
+    public List<Waypoint> path = new List<Waypoint>();
+
     private Vector2Int[] directions = { 
         Vector2Int.up,
         Vector2Int.right,
@@ -20,15 +23,7 @@ public class PathFinder : MonoBehaviour
         Vector2Int.left
     };
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        LoadBlocks();
-        ColorStartAndEnd();
-        FindPath();
-    }
-
-    private void FindPath() {
+    private void BreadthFirstSearch() {
         queue.Enqueue(startWaypoint);
         startWaypoint.isExplored = true;
         
@@ -38,8 +33,20 @@ public class PathFinder : MonoBehaviour
             ExploreNeighbors();
             searchCenter.isExplored = true;
         }
+    }
 
-        print("Done pathfinding?"); // todo remove log
+    private void TraversePath() {
+        path.Add(endWaypoint);
+        Waypoint previous = endWaypoint.exploredFrom;
+
+        while(previous != startWaypoint) {
+            path.Add(previous);
+            previous = previous.exploredFrom;
+        }
+
+        path.Add(startWaypoint);
+
+        path.Reverse();
     }
 
     private void HaltIfEndFound() {
@@ -88,5 +95,17 @@ public class PathFinder : MonoBehaviour
 
     public Waypoint getEndPoint() {
         return endWaypoint;
+    }
+
+    public List<Waypoint> GetPath() {
+        if (startWaypoint == endWaypoint) {
+            Debug.LogError("Start and End are the same, break!");
+        } else {
+            LoadBlocks();
+            ColorStartAndEnd();
+            BreadthFirstSearch();
+            TraversePath();
+        }
+        return path;
     }
 }
