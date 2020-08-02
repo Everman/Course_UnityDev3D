@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    [SerializeField] Transform objectToPan;
-    [SerializeField] Transform targetEnemy;
+    [SerializeField] Transform objectToPan = null;
+    [SerializeField] Transform targetEnemy = null;
 
     private void Start() {
         if (objectToPan == null) { Debug.LogError("objectToPan = null"); }
