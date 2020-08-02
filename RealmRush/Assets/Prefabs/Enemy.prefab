@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &1970440222
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3135170552442601452}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15, y: 14, z: 13}
+  m_Center: {x: 0, y: 7, z: 0}
 --- !u!1 &4871239628454673660
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +24,7 @@ GameObject:
   - component: {fileID: 1892567499738239288}
   - component: {fileID: 8012690038137699663}
   - component: {fileID: 1381143448}
-  - component: {fileID: 7376126969576007928}
+  - component: {fileID: 1381143450}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -59,19 +72,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4635efdb72297304ca27f1faf6658ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &7376126969576007928
-BoxCollider:
+  deathFXParent: {fileID: 0}
+  deathFX: {fileID: 2621250490115803323, guid: 4cadfc3ea6b0cba41a503ac148a0ee70, type: 3}
+  health: 2
+--- !u!54 &1381143450
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4871239628454673660}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14.715572, y: 14.509216, z: 13.63647}
-  m_Center: {x: -0.24707952, y: 9.875289, z: -0.34321705}
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &3136671996410801858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81,7 +100,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1670769832628526, guid: 0dc657ece5d6f514297eb54082bc243b, type: 3}
       propertyPath: m_Name
-      value: Enemy_A
+      value: Body
       objectReference: {fileID: 0}
     - target: {fileID: 4186752768196848, guid: 0dc657ece5d6f514297eb54082bc243b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -129,6 +148,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dc657ece5d6f514297eb54082bc243b, type: 3}
+--- !u!1 &3135170552442601452 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1670769832628526, guid: 0dc657ece5d6f514297eb54082bc243b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3136671996410801858}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3137158855423290930 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4186752768196848, guid: 0dc657ece5d6f514297eb54082bc243b,
