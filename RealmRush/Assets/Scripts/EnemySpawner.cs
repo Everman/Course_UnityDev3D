@@ -7,8 +7,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float secondsBetweenSpawns = 2f;
     [SerializeField] bool spawnEnemies = true;
     [SerializeField] Enemy enemyToSpawn = null;
-    [SerializeField] GameObject parent = null;
-    [SerializeField] GameObject deathFXParent = null;
 
     private void Start() {
         StartCoroutine(SpawnEnemies());
@@ -16,9 +14,7 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemies() {
         while (spawnEnemies) {
-            Enemy enemy = Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
-            enemy.transform.parent = parent.transform;
-            enemy.SetDeathFXParent(deathFXParent);
+            Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(secondsBetweenSpawns);
         }
     }

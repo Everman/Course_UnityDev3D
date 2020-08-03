@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    GameObject deathFXParent = null;
     [SerializeField] GameObject deathFX = null;
+    [SerializeField] GameObject hitFX = null;
 
     [Tooltip("Amount of hits to take before being destroyed")] [SerializeField] int health = 2;
 
@@ -20,18 +20,19 @@ public class Enemy : MonoBehaviour
 
     private void getDamage() {
         if(health <= 1) {
-            playHitEffect();
+            PlayDeathFX();
             Destroy(gameObject, 0.3f);
         } else {
+            playHitEffect();
             health--;
         }
     }
-    private void playHitEffect() {
-        GameObject fx = Instantiate(deathFX, transform.position, Quaternion.identity);
-        fx.transform.parent = deathFXParent.transform;
+
+    private void PlayDeathFX() {
+        Instantiate(deathFX, transform.position, Quaternion.identity);
     }
 
-    public void SetDeathFXParent(GameObject parent) {
-        deathFXParent = parent;
+    private void playHitEffect() {
+        Instantiate(hitFX, transform.position, Quaternion.identity);
     }
 }

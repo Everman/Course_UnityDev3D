@@ -185,36 +185,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 124962050}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &133373602
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 133373603}
-  m_Layer: 0
-  m_Name: DeathFXParent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &133373603
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 133373602}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30.520687, y: 7.110256, z: 0.12768805}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &135508909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4135240793724244, guid: 700ff3467e6f35c4d9307b685e8746d1,
@@ -2518,9 +2488,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondsBetweenSpawns: 2
   spawnEnemies: 1
-  enemyToSpawn: {fileID: 1381143448, guid: a15455cc16f39b9419a5e858bbadf605, type: 3}
-  parent: {fileID: 1189851806}
-  deathFXParent: {fileID: 133373602}
+  enemyToSpawn: {fileID: 114078703179129330, guid: 04f81ff9814844ccfa08226f8d46a3f4,
+    type: 3}
 --- !u!1001 &1190536621
 PrefabInstance:
   m_ObjectHideFlags: 0
