@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
             Enemy enemy = Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
             enemy.transform.parent = parent.transform;
             enemy.SetDeathFXParent(deathFXParent);
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(secondsBetweenSpawns);
         }
     }
 }
