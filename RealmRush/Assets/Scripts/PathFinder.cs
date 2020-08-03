@@ -23,6 +23,13 @@ public class PathFinder : MonoBehaviour
         Vector2Int.left
     };
 
+    private void CalculatePath() {
+        LoadBlocks();
+        ColorStartAndEnd();
+        BreadthFirstSearch();
+        TraversePath();
+    }
+
     private void BreadthFirstSearch() {
         queue.Enqueue(startWaypoint);
         startWaypoint.isExplored = true;
@@ -89,23 +96,12 @@ public class PathFinder : MonoBehaviour
         }
     }
 
-    public Waypoint getStartPoint() {
-        return startWaypoint;
-    }
-
-    public Waypoint getEndPoint() {
-        return endWaypoint;
-    }
-
     public List<Waypoint> GetPath() {
-        if (startWaypoint == endWaypoint) {
-            Debug.LogError("Start and End are the same, break!");
-        } else {
-            LoadBlocks();
-            ColorStartAndEnd();
-            BreadthFirstSearch();
-            TraversePath();
+
+        if (path.Count == 0) {
+            CalculatePath();
         }
+
         return path;
     }
 }

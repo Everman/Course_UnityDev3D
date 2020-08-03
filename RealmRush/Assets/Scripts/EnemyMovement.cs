@@ -7,7 +7,6 @@ public class EnemyMovement : MonoBehaviour
     [Header("Enemy Properties")]
     [Tooltip("Speed of the enemy in seconds")] [SerializeField] float movementSpeed = 1f;
 
-
     // Start is called before the first frame update
     void Start() {
         PathFinder pathFinder = FindObjectOfType<PathFinder>();

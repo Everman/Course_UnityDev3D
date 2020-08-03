@@ -74,7 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathFXParent: {fileID: 0}
   deathFX: {fileID: 2621250490115803323, guid: 4cadfc3ea6b0cba41a503ac148a0ee70, type: 3}
-  health: 2
+  health: 3
 --- !u!54 &1381143450
 Rigidbody:
   m_ObjectHideFlags: 0
