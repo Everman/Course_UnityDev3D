@@ -42,17 +42,23 @@ public class PathFinder : MonoBehaviour
     }
 
     private void TraversePath() {
-        path.Add(endWaypoint);
+        AddWaypointToList(endWaypoint);
+
         Waypoint previous = endWaypoint.exploredFrom;
 
-        while(previous != startWaypoint) {
-            path.Add(previous);
+        while (previous != startWaypoint) {
+            AddWaypointToList(previous);
             previous = previous.exploredFrom;
         }
 
-        path.Add(startWaypoint);
+        AddWaypointToList(startWaypoint);
 
         path.Reverse();
+    }
+
+    private void AddWaypointToList(Waypoint waypoint) {
+        path.Add(waypoint);
+        waypoint.isPlaceable = false;
     }
 
     private void HaltIfEndFound() {

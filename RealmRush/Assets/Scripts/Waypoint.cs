@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour {
     const int gridSize = 10;
+
     public bool isExplored = false;
     public Waypoint exploredFrom;
+    public bool isPlaceable = true;
+
+    [SerializeField] Tower towerPrefab = null;
 
     public int GetGridSize() {
         return gridSize;
@@ -20,6 +24,14 @@ public class Waypoint : MonoBehaviour {
     }
 
     private void OnMouseOver() {
-        Debug.Log("Mouse is over GameObject: " + gameObject);
+        if(Input.GetMouseButtonDown(0) && isPlaceable) {
+            PlaceTower();
+        }
+    }
+
+    private void PlaceTower() {
+        Tower tower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
+
+        isPlaceable = false;
     }
 }
