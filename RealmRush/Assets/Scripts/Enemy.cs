@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] GameObject deathFXParent = null;
+    GameObject deathFXParent = null;
     [SerializeField] GameObject deathFX = null;
 
     [Tooltip("Amount of hits to take before being destroyed")] [SerializeField] int health = 2;
 
     private void Start() {
-        if (deathFXParent == null) { Debug.LogError("Death FX Parent in Enemy script is null"); }
         if (deathFX == null) { Debug.LogError("Death FX in Enemy script is null"); }
     }
 
@@ -30,5 +29,9 @@ public class Enemy : MonoBehaviour
     private void playHitEffect() {
         GameObject fx = Instantiate(deathFX, transform.position, Quaternion.identity);
         fx.transform.parent = deathFXParent.transform;
+    }
+
+    public void SetDeathFXParent(GameObject parent) {
+        deathFXParent = parent;
     }
 }

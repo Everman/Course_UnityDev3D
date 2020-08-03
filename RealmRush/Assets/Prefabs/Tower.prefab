@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToPan: {fileID: 1283913554116098913}
-  targetEnemy: {fileID: 0}
+  ps: {fileID: 2804907646328250564}
+  maxShootingDistance: 3
 --- !u!1001 &1288015002328134373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212,6 +213,11 @@ PrefabInstance:
       propertyPath: CollisionModule.collisionMessages
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3977516809729290189, guid: 8238921bafd389b44921fe80cc7f1f9d,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4445483757550856560, guid: 8238921bafd389b44921fe80cc7f1f9d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -232,6 +238,12 @@ PrefabInstance:
 --- !u!4 &1283913554116098913 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4101459293844584, guid: 8238921bafd389b44921fe80cc7f1f9d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1288015003737329417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2804907646328250564 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3977516809729290189, guid: 8238921bafd389b44921fe80cc7f1f9d,
     type: 3}
   m_PrefabInstance: {fileID: 1288015003737329417}
   m_PrefabAsset: {fileID: 0}
