@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c004135b0ed77d4c885effdd309d458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1
+  movementSpeed: 0.5
 --- !u!114 &114078703179129330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,8 +75,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4635efdb72297304ca27f1faf6658ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathFX: {fileID: 1929956291960174, guid: 1a51bfda454239a41afb7dee687c6ac0, type: 3}
-  hitFX: {fileID: 1505610324796538, guid: dcf9cd10c07cf0c49863969befadb243, type: 3}
+  deathKilledFX: {fileID: 198537984209914932, guid: 1a51bfda454239a41afb7dee687c6ac0,
+    type: 3}
+  deathEndpointFX: {fileID: 2621250490115803321, guid: 4cadfc3ea6b0cba41a503ac148a0ee70,
+    type: 3}
+  hitFX: {fileID: 198801791596541968, guid: dcf9cd10c07cf0c49863969befadb243, type: 3}
   health: 2
 --- !u!1 &1646541640735296
 GameObject:

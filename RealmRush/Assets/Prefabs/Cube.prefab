@@ -155,8 +155,6 @@ MonoBehaviour:
   isExplored: 0
   exploredFrom: {fileID: 0}
   isPlaceable: 1
-  towerPrefab: {fileID: 1288015003576412913, guid: 95c5affad86b3214aa4534923f7991a0,
-    type: 3}
 --- !u!65 &3358615508425570620
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -197,8 +195,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256379643042745163}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children:
   - {fileID: 1424764818}
   m_Father: {fileID: 256379642882833594}
@@ -219,7 +217,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256379643042745163}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

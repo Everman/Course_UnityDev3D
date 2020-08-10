@@ -27,6 +27,13 @@ public class PathFinder : MonoBehaviour
         LoadBlocks();
         BreadthFirstSearch();
         TraversePath();
+        ColorPath();
+    }
+
+    private void ColorPath() {
+        foreach(Waypoint waypoint in path) {
+            waypoint.GetComponentInChildren<MeshRenderer>().material.color = new Color(0.98f, 0f, 0f, 0.36f);
+        }
     }
 
     private void BreadthFirstSearch() {

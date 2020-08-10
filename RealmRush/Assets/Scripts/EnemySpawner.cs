@@ -7,6 +7,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float secondsBetweenSpawns = 2f;
     [SerializeField] bool spawnEnemies = true;
     [SerializeField] Enemy enemyToSpawn = null;
+    [SerializeField] GameObject enemyParent = null;
+    [SerializeField] GameObject particleParent = null;
 
     private void Start() {
         StartCoroutine(SpawnEnemies());
@@ -14,7 +16,12 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemies() {
         while (spawnEnemies) {
-            Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
+            Enemy spawnedEnemy = Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
+            if(enemyParent != null) {
+                spawnedEnemy.transform.parent = enemyParent.transform;
+                spawnedEnemy.SetParticleParent(particleParent);
+            }
+            
             yield return new WaitForSeconds(secondsBetweenSpawns);
         }
     }

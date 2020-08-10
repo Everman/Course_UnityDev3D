@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] GameObject deathFX = null;
-    [SerializeField] GameObject hitFX = null;
+    [SerializeField] ParticleSystem deathKilledFX = null;
+    [SerializeField] ParticleSystem deathEndpointFX = null;
+    [SerializeField] ParticleSystem hitFX = null;
+    public enum deathType { Killed, EndReached }
+
+    private GameObject particleParent;
 
     [Tooltip("Amount of hits to take before being destroyed")] [SerializeField] int health = 2;
 
     private void Start() {
-        if (deathFX == null) { Debug.LogError("Death FX in Enemy script is null"); }
+        if (deathKilledFX == null) { Debug.LogError("Death FX in Enemy script is null"); }
     }
 
     void OnParticleCollision(GameObject other) {
@@ -20,19 +24,46 @@ public class Enemy : MonoBehaviour
 
     private void getDamage() {
         if(health <= 1) {
-            PlayDeathFX();
-            Destroy(gameObject, 0.3f);
+            KillEnemy(deathType.Killed);
         } else {
             playHitEffect();
             health--;
         }
     }
 
-    private void PlayDeathFX() {
-        Instantiate(deathFX, transform.position, Quaternion.identity);
+    public void KillEnemy(deathType dt) {
+        SpawnEnemyDeathEffect(dt);
+        Destroy(gameObject, 0.2f);
+    }
+
+    void SpawnEnemyDeathEffect(deathType dt) {
+        ParticleSystem ps = null;
+
+        switch (dt) {
+            case deathType.Killed:
+                ps = Instantiate(deathKilledFX, transform.position, Quaternion.identity);
+                break;
+            case deathType.EndReached:
+                ps = Instantiate(deathEndpointFX, transform.position, Quaternion.identity);
+                break;
+            default:
+                Debug.LogError("Unkown deathType");
+                break;
+        }
+
+        ps.transform.parent = particleParent.transform;
+
+        Destroy(ps.gameObject, deathKilledFX.main.duration);
     }
 
     private void playHitEffect() {
-        Instantiate(hitFX, transform.position, Quaternion.identity);
+        ParticleSystem ps = Instantiate(hitFX, transform.position, Quaternion.identity);
+        ps.transform.parent = particleParent.transform;
+        
+        Destroy(ps.gameObject, deathKilledFX.main.duration);
+    }
+
+    public void SetParticleParent(GameObject newParticleParent) {
+        particleParent = newParticleParent;
     }
 }

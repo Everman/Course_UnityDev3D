@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,5 +21,12 @@ public class EnemyMovement : MonoBehaviour
             transform.position = waypoint.transform.position;
             yield return new WaitForSeconds(movementSpeed);
         }
+
+        EndAction();
+    }
+
+    private void EndAction() {
+        Enemy enemy = GetComponent<Enemy>();
+        enemy.KillEnemy(Enemy.deathType.EndReached);
     }
 }
