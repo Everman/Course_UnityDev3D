@@ -11,7 +11,9 @@ public class Tower : MonoBehaviour
 
     [Tooltip("Distance in number of blocks the tower will shoot at the enemy")]
     [SerializeField] int maxShootingDistance = 3;
-    
+
+    Waypoint currentWaypoint;
+
     private void Start() {
         if (objectToPan == null) { Debug.LogError("objectToPan = null"); }
         if (ps == null) { Debug.LogError("ps = null"); }
@@ -70,5 +72,13 @@ public class Tower : MonoBehaviour
     void EnableTurret(bool enable) {
         ParticleSystem.EmissionModule em = ps.emission;
         em.enabled = enable;
+    }
+
+    public Waypoint GetCurrentWaypoint() {
+        return currentWaypoint;
+    }
+
+    public void SetCurrentWaypoint(Waypoint waypoint) {
+        currentWaypoint = waypoint;
     }
 }
