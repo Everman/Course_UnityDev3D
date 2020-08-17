@@ -13,6 +13,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] Text numberOfEnemiesTest = null;
     int numberOfEnemies = 0;
 
+    [Header("Audio")] [SerializeField] AudioClip enemySpawnAudio = null;
+
     private void Start() {
         numberOfEnemiesTest.text = numberOfEnemies.ToString();
         StartCoroutine(SpawnEnemies());
@@ -21,6 +23,8 @@ public class EnemySpawner : MonoBehaviour
     IEnumerator SpawnEnemies() {
         while (spawnEnemies) {
             Enemy spawnedEnemy = Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
+
+            GetComponent<AudioSource>().PlayOneShot(enemySpawnAudio);
 
             AddScore();
 
