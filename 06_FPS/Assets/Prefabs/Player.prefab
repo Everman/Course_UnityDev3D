@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f072bc3547a864280837fe3e8a0e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 12
   jumpSpeed: 8
-  gravity: 20
+  gravity: 30
 --- !u!143 &7546108776505620274
 CharacterController:
   m_ObjectHideFlags: 0
@@ -56,7 +56,7 @@ CharacterController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7546108776505620284}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 646d33b87992ea3449352085aaf3a755, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -252,7 +252,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7546108778202081230}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 646d33b87992ea3449352085aaf3a755, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5

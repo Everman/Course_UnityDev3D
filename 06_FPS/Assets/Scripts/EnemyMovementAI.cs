@@ -5,19 +5,38 @@ using UnityEngine.AI;
 
 public class EnemyMovementAI : MonoBehaviour
 {
-
+    
     [SerializeField] Transform target = null;
-    NavMeshAgent navMeshAgent;
+    [SerializeField] float chaseRange = 25f;
+    [SerializeField] bool debug = false;
 
-    // Start is called before the first frame update
+    
+    NavMeshAgent navMeshAgent;
+    float distanceToTarget = Mathf.Infinity;
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         navMeshAgent.SetDestination(target.position);
+        ChaseCheck();
+    }
+
+    private void ChaseCheck() {
+        distanceToTarget = Vector3.Distance(target.position, transform.position);
+        if (distanceToTarget <= chaseRange) {
+            navMeshAgent.isStopped = false;
+        } else {
+            navMeshAgent.isStopped = true;
+        }
+    }
+
+    void OnDrawGizmos() {
+        if (debug) {
+            Gizmos.color = new Color(1, 1, 0, 0.75F);
+            Gizmos.DrawWireSphere(transform.position, chaseRange);
+        }
     }
 }
