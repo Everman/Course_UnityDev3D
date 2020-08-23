@@ -1302,6 +1302,16 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 997711900}
+    - target: {fileID: 9094184582259646474, guid: 661791c18093ab54a9832e8119ab2e80,
+        type: 3}
+      propertyPath: debug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9094184582259646475, guid: 661791c18093ab54a9832e8119ab2e80,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9094184582259646484, guid: 661791c18093ab54a9832e8119ab2e80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1315,7 +1325,7 @@ PrefabInstance:
     - target: {fileID: 9094184582259646484, guid: 661791c18093ab54a9832e8119ab2e80,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 18.93
       objectReference: {fileID: 0}
     - target: {fileID: 9094184582259646484, guid: 661791c18093ab54a9832e8119ab2e80,
         type: 3}
