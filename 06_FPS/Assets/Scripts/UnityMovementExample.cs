@@ -11,9 +11,12 @@ public class UnityMovementExample : MonoBehaviour
 {
     CharacterController characterController;
 
-    [SerializeField] private float speed = 6.0f;
+    [SerializeField] private float normalSpeed = 6.0f;
+    [SerializeField] private float sprintSpeed = 12.0f;
     [SerializeField] private float jumpSpeed = 8.0f;
     [SerializeField] private float gravity = 20.0f;
+
+    float speed;
 
     private Vector3 moveDirection = Vector3.zero;
 
@@ -24,6 +27,12 @@ public class UnityMovementExample : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetButton("Sprint")) {
+            speed = sprintSpeed;
+        } else {
+            speed = normalSpeed;
+        }
+
         if (characterController.isGrounded)
         {
             // We are grounded, so recalculate
