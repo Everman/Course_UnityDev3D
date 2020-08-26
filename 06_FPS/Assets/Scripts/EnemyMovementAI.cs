@@ -16,9 +16,12 @@ public class EnemyMovementAI : MonoBehaviour
     float distanceToTarget = Mathf.Infinity;
     bool isProvoked;
 
+    Animator animator;
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     void Update() {
@@ -38,15 +41,23 @@ public class EnemyMovementAI : MonoBehaviour
         
         if (distanceToTarget < navMeshAgent.stoppingDistance) { 
             AttackTarget();
+        } else {
+            animator.SetBool("attack", false);
         }
     }
 
     private void ChaseTarget() {
+        animator.SetTrigger("move");
         navMeshAgent.SetDestination(target.position);
     }
 
     private void AttackTarget() {
-        Debug.Log("Attack my boi");
+        animator.SetBool("attack", true);
+    }
+
+    public void provoke() {
+        isProvoked = true;
+        navMeshAgent.SetDestination(target.position);
     }
 
     void OnDrawGizmos() {
